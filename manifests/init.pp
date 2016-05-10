@@ -43,6 +43,21 @@ class profile_wls (
     use_hiera => false,
   }
 
+  group { $os_group:
+    ensure => present,
+  }
+
+  user { $os_user:
+    ensure     => present,
+    groups     => 'dba',
+    shell      => '/bin/bash',
+    password   => '$1$l2/BjYjS$Y7pLUyyh5i1eqhCyelAiF.',
+    home       => "/home/${os_user}",
+    comment    => 'Oracle user created by Puppet',
+    managehome => true,
+    require    => Group[$os_group],
+  }
+
   include ::orawls::urandomfix
   class{'::orawls::weblogic':
     version              => $version,
