@@ -15,7 +15,16 @@ class profile_wls::server (
   $address             = $::ipaddress,
 ){
 
-  Sysctl <||> -> Class['limits'] -> Group[$os_group] -> User[$os_user] -> Class['::orawls::urandomfix'] -> Class['orawls::weblogic']
+  Sysctl <||>
+    -> Class['limits']
+    -> Group[$os_group]
+    -> User[$os_user]
+    -> Class['::orawls::urandomfix']
+    -> Class['::orawls::urandomfix']
+    -> Class['orawls::weblogic']
+    -> Orawls::Copydomain['Wls12c']
+    -> Orawls::Nodemanager['nodemanager12c']
+    -> Orawls::Control['startWLSAdminServer12c']
 
   sysctl { 'kernel.msgmnb':                 ensure => 'present', permanent => 'yes', value => '65536',}
   sysctl { 'kernel.msgmax':                 ensure => 'present', permanent => 'yes', value => '65536',}
