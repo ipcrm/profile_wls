@@ -166,8 +166,8 @@ class profile_wls (
     listenport        => '5556',
     machinetype       => 'UnixMachine',
     nmtype            => 'SSL',
-    weblogic_home_dir => $wl_home,
   }
+
   wls_machine { 'server1':
     ensure            => 'present',
     listenaddress     => '192.168.0.174',
