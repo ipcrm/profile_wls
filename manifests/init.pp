@@ -151,18 +151,20 @@ class profile_wls (
   }
 
   wls_machine { 'server0':
-    ensure        => 'present',
-    listenaddress => '192.168.0.173',
-    listenport    => '5556',
-    machinetype   => 'UnixMachine',
-    nmtype        => 'SSL',
+    ensure            => 'present',
+    listenaddress     => '192.168.0.173',
+    listenport        => '5556',
+    machinetype       => 'UnixMachine',
+    nmtype            => 'SSL',
+    weblogic_home_dir => $wl_home,
   }
   wls_machine { 'server1':
-    ensure        => 'present',
-    listenaddress => '192.168.0.174',
-    listenport    => '5556',
-    machinetype   => 'UnixMachine',
-    nmtype        => 'SSL',
+    ensure            => 'present',
+    listenaddress     => '192.168.0.174',
+    listenport        => '5556',
+    machinetype       => 'UnixMachine',
+    nmtype            => 'SSL',
+    weblogic_home_dir => $wl_home,
   }
 
 
