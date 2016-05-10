@@ -10,6 +10,7 @@ class profile_wls (
   $dwnld_dir = '/var/tmp/',
   $src_dir   = '/var/tmp/',
   $log_dir   = '/var/tmp/',
+  $address   = $::ipaddress,
 ){
 
   Sysctl <||> -> Class['limits'] -> Group[$os_group] -> User[$os_user] -> Class['::orawls::urandomfix'] -> Class['orawls::weblogic']
@@ -85,7 +86,7 @@ class profile_wls (
     domain_name                 => 'Wls12c',
     development_mode            => false,
     adminserver_name            => 'AdminServer',
-    adminserver_address         => 'localhost',
+    adminserver_address         => $address,
     adminserver_port            => 7001,
     nodemanager_secure_listener => true,
     nodemanager_port            => 5556,
@@ -127,7 +128,7 @@ class profile_wls (
     jdk_home_dir                => $jdk_home,
     weblogic_user               => 'weblogic',
     weblogic_password           => 'weblogic1',
-    adminserver_address         => 'localhost',
+    adminserver_address         => $address,
     adminserver_port            => 7001,
     nodemanager_port            => 5556,
     nodemanager_secure_listener => true,
