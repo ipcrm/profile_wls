@@ -64,6 +64,16 @@ class profile_wls (
   }
 
   include ::orawls::urandomfix
+
+  wls_setting { 'default':
+    user                         => 'oracle',
+    weblogic_home_dir            => $wl_home,
+    connect_url                  => "t3://localhost:7001",
+    weblogic_user                => 'weblogic',
+    weblogic_password            => 'weblogic1',
+    use_default_value_when_empty => true
+  }
+
   class{'::orawls::weblogic':
     version              => $version,
     filename             => $filename,
