@@ -11,6 +11,9 @@ class profile_wls (
   $src_dir   = '/var/tmp/',
   $log_dir   = '/var/tmp/',
 ){
+
+  Sysctl <||> -> Class['limits'] -> Group[$os_group] -> User[$os_user] -> Class['::orawls::urandomfix'] -> Class['orawls::weblogic']
+
   sysctl { 'kernel.msgmnb':                 ensure => 'present', permanent => 'yes', value => '65536',}
   sysctl { 'kernel.msgmax':                 ensure => 'present', permanent => 'yes', value => '65536',}
   sysctl { 'kernel.shmmax':                 ensure => 'present', permanent => 'yes', value => '2147483648',}
