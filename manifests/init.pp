@@ -40,6 +40,31 @@ class profile_wls (
     weblogic_password          => 'Welcome01',
     adminserver_listen_address => $::ipaddress,
     nodemanager_listen_address => $::ipaddress,
+    nodemanagers => [ { "id" => "node1",
+                        "listen_address" => '192.168.0.175',
+                      },
+                      { "id" => "node2",
+                        "listen_address" => '192.168.0.176',
+                      }],
+    servers      =>  [
+      { "id"             => "server1",
+        "nodemanager"    => "node1",
+        "listen_address" => '192.168.0.175',
+        "listen_port"    => 8001,
+        "arguments"      => "-XX:PermSize=256m -XX:MaxPermSize=512m -Xms1024m -Xmx1024m"
+      },
+      { "id"             => "server2",
+        "nodemanager"    => "node2",
+        "listen_address" => '192.168.0.176',
+        "listen_port"    => 8002,
+        "arguments"      => "-XX:PermSize=256m -XX:MaxPermSize=512m -Xms1024m -Xmx1024m"
+      },
+      ],
+    clusters      => [
+      { "id"      => "cluster1",
+        "members" => ["server1","server2"]
+      },
+    ],
   }
 
   include ::fmw_domain::domain
@@ -47,7 +72,3 @@ class profile_wls (
   include ::fmw_domain::adminserver
 
 }
-
-
-
-
