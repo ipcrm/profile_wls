@@ -7,9 +7,9 @@ class profile_wls (
   $wl_home   = '/opt/oracle/middleware12c/wlserver',
   $os_user   = 'oracle',
   $os_group  = 'dba',
-  $dwnld_dir = '/var/tmp/',
-  $src_dir   = '/var/tmp/',
-  $log_dir   = '/var/tmp/',
+  $dwnld_dir = '/var/tmp',
+  $src_dir   = '/var/tmp',
+  $log_dir   = '/var/tmp',
   $address   = $::ipaddress,
 ){
 
