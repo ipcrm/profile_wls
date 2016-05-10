@@ -174,7 +174,6 @@ class profile_wls (
     listenport        => '5556',
     machinetype       => 'UnixMachine',
     nmtype            => 'SSL',
-    weblogic_home_dir => $wl_home,
   }
 
 
