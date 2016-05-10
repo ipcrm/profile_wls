@@ -4,6 +4,8 @@ class profile_wls (
   $middleware_home_dir = '/opt/oracle/middleware',
   $weblogic_home_dir   = '/opt/oracle/middleware/wlserver',
   $source_file         = '/var/tmp/fmw_12.2.1.0.0_wls.jar',
+  $dbname              = '',
+  $dbserver            = '',
 )
 {
   include ::fmw_jdk::rng_service
