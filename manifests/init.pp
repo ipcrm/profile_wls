@@ -99,6 +99,7 @@ class profile_wls (
   orawls::nodemanager{'nodemanager12c':
     version                     => $version,
     weblogic_home_dir           => $wl_home,
+    middleware_home_dir         => $mw_home,
     jdk_home_dir                => $jdk_home,
     nodemanager_port            => 5556,
     nodemanager_secure_listener => true,
@@ -119,6 +120,7 @@ class profile_wls (
     server                      => 'AdminServer',
     action                      => 'start',
     weblogic_home_dir           => $wl_home,
+    middleware_home_dir         => $mw_home,
     jdk_home_dir                => $jdk_home,
     weblogic_user               => 'weblogic',
     weblogic_password           => 'weblogic1',
