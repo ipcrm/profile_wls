@@ -162,7 +162,7 @@ class profile_wls (
 
   wls_machine { 'server0':
     ensure            => 'present',
-    listenaddress     => '192.168.0.173',
+    listenaddress     => 'localhost',
     listenport        => '5556',
     machinetype       => 'UnixMachine',
     nmtype            => 'SSL',
