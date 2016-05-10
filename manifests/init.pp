@@ -68,7 +68,7 @@ class profile_wls (
   wls_setting { 'default':
     user                         => 'oracle',
     weblogic_home_dir            => $wl_home,
-    connect_url                  => "t3://localhost:7001",
+    connect_url                  => "t3://${::ipaddress}:7001",
     weblogic_user                => 'weblogic',
     weblogic_password            => 'weblogic1',
     use_default_value_when_empty => true
