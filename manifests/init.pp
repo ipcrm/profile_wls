@@ -11,6 +11,7 @@ class profile_wls (
   $src_dir   = '/var/tmp',
   $log_dir   = '/var/tmp',
   $address   = $::ipaddress,
+  $servers   = {},
 ){
 
   Sysctl <||> -> Class['limits'] -> Group[$os_group] -> User[$os_user] -> Class['::orawls::urandomfix'] -> Class['orawls::weblogic']
@@ -149,7 +150,20 @@ class profile_wls (
     download_dir        => '/var/tmp/',
   }
 
-
+  wls_machine { 'server0':
+    ensure        => 'present',
+    listenaddress => '192.168.0.173',
+    listenport    => '5556',
+    machinetype   => 'UnixMachine',
+    nmtype        => 'SSL',
+  }
+  wls_machine { 'server1':
+    ensure        => 'present',
+    listenaddress => '192.168.0.174',
+    listenport    => '5556',
+    machinetype   => 'UnixMachine',
+    nmtype        => 'SSL',
+  }
 
 
 
