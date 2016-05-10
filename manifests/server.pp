@@ -93,7 +93,7 @@ class profile_wls::server (
     log_dir             => $log_dir,
     log_output          => true,
     use_ssh             => false,
-    domain_pack_dir     => $dwnld_dir,
+    domain_pack_dir     => "/tmp",
     adminserver_address => $adminserver_address,
     adminserver_port    => $adminserver_port,
     weblogic_user       => 'weblogic',
