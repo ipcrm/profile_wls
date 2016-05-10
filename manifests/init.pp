@@ -40,6 +40,9 @@ class profile_wls (
     weblogic_password          => 'Welcome01',
     adminserver_listen_address => $::ipaddress,
     nodemanager_listen_address => $::ipaddress,
+  }
+
+  class { 'fmw_domain::domain':
     nodemanagers => [ { "id" => "node1",
                         "listen_address" => '192.168.0.175',
                       },
@@ -67,7 +70,6 @@ class profile_wls (
     ],
   }
 
-  include ::fmw_domain::domain
   include ::fmw_domain::nodemanager
   include ::fmw_domain::adminserver
 
