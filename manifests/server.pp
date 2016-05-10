@@ -100,4 +100,25 @@ class profile_wls::server (
     weblogic_password   => 'weblogic1',
     server_start_mode   => 'dev',
   }
+  orawls::control{'startWLSAdminServer12c':
+    domain_name                 => 'Wls12c',
+    server_type                 => 'managed',
+    target                      => 'Server',
+    server                      => 'AdminServer',
+    action                      => 'start',
+    weblogic_home_dir           => $wl_home,
+    middleware_home_dir         => $mw_home,
+    jdk_home_dir                => $jdk_home,
+    weblogic_user               => 'weblogic',
+    weblogic_password           => 'weblogic1',
+    adminserver_address         => $address,
+    adminserver_port            => 7001,
+    nodemanager_port            => 5556,
+    nodemanager_secure_listener => true,
+    os_user                     => $os_user,
+    os_group                    => $os_group,
+    download_dir                => $dwnld_dir,
+    log_output                  => true,
+  }
+
 }
