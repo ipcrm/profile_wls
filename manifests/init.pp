@@ -138,15 +138,15 @@ class profile_wls (
     log_output                  => true,
   }
 
-  orawls::packdomain{"Wls12c":
-    weblogic_home_dir      => $wl_home,
-    middleware_home_dir    => $mw_home,
-    jdk_home_dir           => $jdk_home,
-    wls_domains_dir        => "/opt/oracle/domains",
-    domain_name            => "Wls12c",
-    os_user                => $os_user,
-    os_group               => $os_group,
-    download_dir           => "/var/tmp/",
+  orawls::packdomain{'Wls12c':
+    weblogic_home_dir   => $wl_home,
+    middleware_home_dir => $mw_home,
+    jdk_home_dir        => $jdk_home,
+    wls_domains_dir     => "${mw_home}/user_projects/domains/",
+    domain_name         => 'Wls12c',
+    os_user             => $os_user,
+    os_group            => $os_group,
+    download_dir        => '/var/tmp/',
   }
 
 
