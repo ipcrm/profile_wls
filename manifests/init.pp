@@ -11,7 +11,7 @@ class profile_wls (
   $src_dir   = '/var/tmp/',
   $log_dir   = '/var/tmp/',
 ){
-  include ::wls::urandomfix
+  include ::orawls::urandomfix
   class{'::orawls::weblogic':
     version              => $version,
     filename             => $filename,
