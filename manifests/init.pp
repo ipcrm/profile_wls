@@ -15,23 +15,26 @@ class profile_wls (
     java_home_dir => $java_home_dir,
     source_file   => '/var/tmp/jdk-8u45-linux-x64.rpm',
   }
+  contain '::fmw_jdk::install'
 
   class { '::fmw_wls':
       version             => $version,
       middleware_home_dir => $middleware_home_dir,
       os_user_uid         => '10000',
   }
+  contain '::fmw_wls'
 
   Class['fmw_wls::setup'] ->
     Class['fmw_wls::install']
 
-  include ::fmw_wls::setup
+  contain '::fmw_wls::setup'
 
   class { '::fmw_wls::install':
     java_home_dir => $java_home_dir,
     source_file   => $source_file,
     install_type  => 'wls', # 'wls' is the default
   }
+  contain '::fmw_wls::install'
 
   class { '::fmw_domain':
     version                    => $version,
@@ -46,9 +49,9 @@ class profile_wls (
     nodemanager_listen_address => $listen_address,
   }
 
-  include ::fmw_domain::domain
-  include ::fmw_domain::nodemanager
-  include ::fmw_domain::adminserver
+  contain ::fmw_domain::domain
+  contain ::fmw_domain::nodemanager
+  contain ::fmw_domain::adminserver
 
 }
 
