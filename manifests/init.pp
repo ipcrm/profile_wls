@@ -6,6 +6,7 @@ class profile_wls (
   $source_file         = '/var/tmp/fmw_12.2.1.0.0_wls.jar',
   $dbname              = '',
   $dbserver            = '',
+  $listen_address     = $::ipaddress,
 )
 {
   include ::fmw_jdk::rng_service
@@ -41,8 +42,8 @@ class profile_wls (
     apps_dir                   => "${middleware_home_dir}/user_projects/applications",
     domain_name                => 'base_domain',
     weblogic_password          => 'Welcome01',
-    adminserver_listen_address => $::ipaddress,
-    nodemanager_listen_address => $::ipaddress,
+    adminserver_listen_address => $listen_address,
+    nodemanager_listen_address => $listen_address,
   }
 
   include ::fmw_domain::domain
