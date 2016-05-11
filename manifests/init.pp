@@ -18,6 +18,7 @@ class profile_wls (
   class { '::fmw_wls':
       version             => $version,
       middleware_home_dir => $middleware_home_dir,
+      os_user_uid         => '1000',
   }
 
   Class['fmw_wls::setup'] ->
